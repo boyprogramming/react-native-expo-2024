@@ -14,8 +14,8 @@ export function AuthProvider({ children }) {
              setUser({ id: 1, name: "super", email, role: "SUPER" });
         }
     
-        if (email === "adm@email.com" && password === "Super123") {
-            setUser({ id: 1, name: "super", email, role: "SUPER" });
+        if (email === "adm@email.com" && password === "Adm123") {
+            setUser({ id: 1, name: "super", email, role: "ADM" });
        }
    
     };
