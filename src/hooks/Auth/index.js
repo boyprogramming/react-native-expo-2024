@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const AuthContext = createContext({});
 
@@ -9,13 +9,24 @@ export function AuthProvider({ children }) {
         role: null,
     });
 
-    const signIn = ({email, password}) => {
-        setUser({ id: 1, name: "usuário 1", email });
+    const signIn = async ({email, password}) => {
+        if (email === "super@email.com" && password === "Super123") {
+             setUser({ id: 1, name: "super", email, role: "SUPER" });
+        }
+    
+        if (email === "adm@email.com" && password === "Super123") {
+            setUser({ id: 1, name: "super", email, role: "SUPER" });
+       }
+   
     };
 
-    const signOut = () => {
+    const signOut = async () => {
         setUser({});
     };
+
+    useEffect(()=>{
+        console.log('AuthProvider', user);
+    }, [user]);
 
     return (
         <AuthContext.Provider value={{ user, signIn, signOut }}>
