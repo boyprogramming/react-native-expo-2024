@@ -1,19 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
-import { useAuth } from '../hooks/Auth';
 import { router } from 'expo-router';
+import { useAuth } from '../hooks/Auth';
 
 export default function App() {
   const { signIn, signOut } = useAuth();
 
   const handleEntrarSuper = async () => {
-   try{
-    await  signIn({ email: "super@email.com", password: "Super123" })
-    router.replace("/(protected)");
-   } catch (error) {
-      console.log(e)
-   }
-  }
+    try {
+      await signIn({ email: "super@email.com", password: "Super123" })
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -21,17 +20,12 @@ export default function App() {
       <Button title="Signin Super" onPress={handleEntrarSuper} />
       <Button
         title="Signin Adm"
-        onPress={() =>
-          signIn({ email: "adm@email.com", password: "Adm123" })
-        }
+        onPress={() => signIn({ email: "adm@email.com", password: "Adm123" })}
       />
       <Button
         title="Signin User"
-        onPress={() =>
-          signIn({ email: "user@email.com", password: "User123" })
-        }
+        onPress={() => signIn({ email: "user@email.com", password: "User123" })}
       />
-      <Button title="Signout" onPress={() => signOut()} />
       <StatusBar style="auto" />
     </View>
   );

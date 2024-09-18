@@ -1,12 +1,13 @@
 import { View, Text, Button } from "react-native";
-import { useAuth } from "../hooks/Auth";
+import { useAuth } from "../../hooks/Auth";
 
 export default function Home() {
-    const {signOut} = useAuth();
+    const { signOut } = useAuth();
+    
     return (
-        <View style={{flex: 1, justufyContent: 'center', alignItems: 'center'}}>
+        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
             <Text>Home</Text>
-            <Button title="sair" onPress={() => signOut( )} />
+            <Button title="sair" onPress={() => signOut()} />
         </View>
     );
 }
