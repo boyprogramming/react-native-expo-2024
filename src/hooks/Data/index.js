@@ -1,12 +1,18 @@
-import { createContext } from 'react';
+import { SQLiteProvider } from 'expo-sqlite';
+import { createContext, useContext, useState } from 'react';
+import { iniatializeDatabase } from '../../database/initializeDatabase';
 
-const DataContext = createContext();
 
-export default function DataProvider({ children }) {
+const DataContext = createContext({});
+
+export function DataProvider({ children }) {
     const [data, setData] = useState(false);
     return (
-    <DataContext.Provider value={{ data }}>
-        {children}</DataContext.Provider>
+        <DataContext.Provider value={{ data }}>
+            <SQLiteProvider databaseName="data.db" onInit={iniatializeDatabase}>
+                {children}
+            </SQLiteProvider>
+        </DataContext.Provider>
     );
 }
 

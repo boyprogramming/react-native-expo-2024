@@ -16,50 +16,50 @@ export function AuthProvider({ children }) {
         role: null,
     });
 
-    const signIn = async ({email, password}) => {
+    const signIn = async ({ email, password }) => {
         if (email === "super@email.com" && password === "Super123") {
-             setUser({ 
+            setUser({
                 authenticaded: true,
-                user: {id: 1, name: "Super Usuário", email, role: "SUPER"},
+                user: { id: 1, name: "Super Usuário", email, role: "SUPER" },
                 role: ROLE.SUPER
             });
         } else if (email === "adm@email.com" && password === "Adm123") {
             setUser({
-            authenticaded: true,
-            user: {id: 2, name: "Administrador Usuário", email, role: "ADM"},
-            role: ROLE.ADM
-        });
-       } else if (email === "user@email.com" && password === "User123") {
-        setUser({
-            authenticaded: true,
-            user: {id: 3, name: "Usuário", email, role: "USER"},
-            role: ROLE.USER
+                authenticaded: true,
+                user: { id: 2, name: "Administrador Usuário", email, role: "ADM" },
+                role: ROLE.ADM
+            });
+        } else if (email === "user@email.com" && password === "User123") {
+            setUser({
+                authenticaded: true,
+                user: { id: 3, name: "Usuário", email, role: "USER" },
+                role: ROLE.USER
 
-        });
-   } else {
-        setUser({
-            authenticaded: false,
-            user: null,
-            role: null
-        });
-   }
+            });
+        } else {
+            setUser({
+                authenticaded: false,
+                user: null,
+                role: null
+            });
+        }
 
-   
+
     };
 
     const signOut = async () => {
         setUser({});
     };
 
-    useEffect(()=>{
+    useEffect(() => {
         console.log('AuthProvider', user);
     }, [user]);
 
     return (
         <AuthContext.Provider value={{ user, signIn, signOut }}>
-        {children}
+            {children}
         </AuthContext.Provider>
-        
+
     );
 
 }
