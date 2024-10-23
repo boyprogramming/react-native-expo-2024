@@ -27,9 +27,7 @@ export default function App() {
         onPress={() => signIn({ email: "user@email.com", password: "User123" })}
       />
       <Button title="Sobre" onPress={() => router.push("/about")} />
-      <Button title="Sair do Aplicativo"
-        onPress={() => BackHandler.exitApp()}
-      />
+      <Button title="Sair do Aplicativo" onPress={() => BackHandler.exitApp()} />
       <StatusBar style="auto" />
     </View>
   );

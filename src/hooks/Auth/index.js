@@ -11,7 +11,7 @@ export const ROLE = {
 
 export function AuthProvider({ children }) {
     const [user, setUser] = useState({
-        authenticaded: null,
+        authenticated: null,
         user: null,
         role: null,
     });
@@ -19,26 +19,26 @@ export function AuthProvider({ children }) {
     const signIn = async ({ email, password }) => {
         if (email === "super@email.com" && password === "Super123") {
             setUser({
-                authenticaded: true,
+                authenticated: true,
                 user: { id: 1, name: "Super Usuário", email, role: "SUPER" },
                 role: ROLE.SUPER
             });
         } else if (email === "adm@email.com" && password === "Adm123") {
             setUser({
-                authenticaded: true,
+                authenticated: true,
                 user: { id: 2, name: "Administrador Usuário", email, role: "ADM" },
                 role: ROLE.ADM
             });
         } else if (email === "user@email.com" && password === "User123") {
             setUser({
-                authenticaded: true,
+                authenticated: true,
                 user: { id: 3, name: "Usuário", email, role: "USER" },
                 role: ROLE.USER
 
             });
         } else {
             setUser({
-                authenticaded: false,
+                authenticated: false,
                 user: null,
                 role: null
             });
@@ -48,7 +48,11 @@ export function AuthProvider({ children }) {
     };
 
     const signOut = async () => {
-        setUser({});
+        setUser({
+            authenticated: false,
+            user: null,
+            role: null
+        });
     };
 
     useEffect(() => {
